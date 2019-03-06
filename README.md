@@ -22,14 +22,16 @@ This will create a directory called *pwnage.py* and all the code will be in it.
 
 ### Usage
 ```
-python pwnage.py --help
-usage: pwnage.py [-h] [-p <password>] [-v]
+python pwnage.py -h
+usage: pwnage.py [-h] [-a <account>] [-p <password>] [-v]
 
 Checks passwords against the Have I Been Pwned database
 https://haveibeenpwned.com
 
 optional arguments:
   -h, --help            show this help message and exit
+  -a <account>, --account <account>
+                        account to check against database
   -p <password>, --password <password>
                         password to check against database
   -v, --verbose         verbose output, useful for debugging issues
