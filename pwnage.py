@@ -15,18 +15,10 @@
 # Imports
 # -----------------------------------------------------------------------------
 import requests
-import hashlib
+from hashlib import sha1
 import io
 import argparse
 import urllib
-
-
-
-# -----------------------------------------------------------------------------
-# Hash input password
-# -----------------------------------------------------------------------------
-def hash_it(input_password):
-    return hashlib.sha1(input_password.encode()).hexdigest()
 
 
 
@@ -74,28 +66,52 @@ def account_pwnage(input_account, debug=False, truncate_reponse=True):
     response = call_hibp_api(url, debug=debug, params=params)
     
     # parse reponse
-    parse_account_response(response, input_account, debug)
+    parse_account_response(response, input_account, debug, truncate_reponse)
 
 
 
 # -----------------------------------------------------------------------------
 # Parse account response
 # -----------------------------------------------------------------------------
-def parse_account_response(response, input_account, debug=False):
+def parse_account_response(response, input_account, debug=False, truncate_reponse=False):
     if response.status_code == 404: # account not pwned!
         print(str(input_account) + ' has not been pwned!')
 
     elif response.status_code == 200: # account pwned!
         j = response.json() # get the json
         
-        # let's see the bad news
+        # print the bad news
         print(str(input_account + ' has been pwned in these breaches:'))
-        
-        # loop through json
-        for i in j:
-            print(i['Name'])
 
-    else:
+        if not truncate_reponse: # truncated response
+            for breach in j: # iterate through the breaches
+                
+                # pull out the details we want to print
+                name = breach['Name']
+                date = breach['BreachDate']
+                classes = breach['DataClasses']
+                verified = breach['IsVerified']
+                if verified:
+                    ver_status = 'Verified'
+                else:
+                    ver_status = 'Unverified'
+                
+                # format classes info for output
+                class_string = "" # string for holding classes info
+                i = 0 # counter
+                while i < len(classes)-1: # iterate through all but last entry in list
+                    class_string = class_string + classes[i] + ', '
+                    i += 1 # iterate counter
+                class_string = class_string + classes[len(classes)-1] # get the last entry
+
+                # print details
+                print(str(ver_status) + ': ' + str(name) + ' on ' + str(date) + '. Details leaked: ' + str(class_string))
+        
+        else: # truncated response
+            for i in j: # loop through json
+                print(i['Name']) # print details
+
+    else: # response code isn't 200 or 404
         print('Error reaching API')
         if debug:
             print('Response code: ' + str(response.status_code))
@@ -107,7 +123,7 @@ def parse_account_response(response, input_account, debug=False):
 # Look for pwned passwords
 # -----------------------------------------------------------------------------
 def password_pwnage(input_password, debug=False):
-    hashed_pass = hash_it(input_password) # get hash of password
+    hashed_pass = sha1(input_password.encode()).hexdigest() # get hash of password
     hash_prefix = hashed_pass[:5] # get first 5 characters of hashed password
     hash_suffix = hashed_pass[5:] # get characters except first 5 from hashed password
     if debug:
@@ -204,8 +220,8 @@ if __name__ == "__main__":
         password_pwnage(args.password, debug=args.debug)
 
     if args.account:
-        #account_pwnage(args.account, debug=args.debug, truncate_reponse=False)
-        account_pwnage(args.account, debug=args.debug)
+        account_pwnage(args.account, debug=args.debug, truncate_reponse=False)
+        #account_pwnage(args.account, debug=args.debug)
     
     if not args.account and not args.password:
         parser.print_help()
