@@ -21,20 +21,35 @@ git clone https://github.com/zloether/pwnage.py.git
 This will create a directory called *pwnage.py* and all the code will be in it.
 
 ### Usage
-Run the script with a password as an argument and it will output if the password has been compromised or not.
 ```
-python pwnage.py "password123"
-This password has been pwned 116847 times!
+python pwnage.py --help
+usage: pwnage.py [-h] [-p <password>] [-v]
+
+Checks passwords against the Have I Been Pwned database
+https://haveibeenpwned.com
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p <password>, --password <password>
+                        password to check against database
+  -v, --verbose         verbose output, useful for debugging issues
 ```
-or
+
+Trying a bad password
 ```
-python pwnage.py "e;jf;4jer43;jredfj3jcnmekjdf"
+python pwnage.py -p password
+This password has been pwned 3645804 times!
+```
+
+Trying a better password
+```
+python pwnage.py -p "djf;hjdhfjk3;j4r436@@!"
 This password has not been pwned yet.
 ```
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 ### Acknowledgments
 
