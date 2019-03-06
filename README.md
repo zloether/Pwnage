@@ -1,5 +1,5 @@
 # pwnage.py
-Checks passwords against [Have I Been Pwned](https://haveibeenpwned.com/)
+Python based command line tool for checking the [Have I Been Pwned](https://haveibeenpwned.com/) database.
 
 ### Getting Started
 These instructions will get you a copy of the project up and running on your local machine.
@@ -56,5 +56,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 ### Acknowledgments
 
 * [Troy Hunt](https://www.troyhunt.com/) for creating [Have I Been Pwned](https://haveibeenpwned.com/)
-* [Requests: HTTP for Humans](python-requests.org/)
+* [Requests: HTTP for Humans](http://python-requests.org/)
 
