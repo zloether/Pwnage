@@ -132,13 +132,15 @@ def parse_arguments():
     # parse the arguments
     args = parser.parse_args()
     
-    return args
+    return args, parser
 
 # -----------------------------------------------------------------------------
 # Run interactively
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    args = parse_arguments()
+    args, parser = parse_arguments()
     
     if args.input_password:
         pwnage(args.input_password, args.debug)
+    else:
+        parser.print_help()
