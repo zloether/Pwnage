@@ -1,9 +1,9 @@
 import pwnage
 from argparse import ArgumentParser
 
-def test_parse_arguments(capsys):
-    args, parser = pwnage.parse_arguments()
-    assert isinstance(parser, ArgumentParser)
+#def test_parse_arguments(capsys):
+#    args, parser = pwnage.parse_arguments()
+#    assert isinstance(parser, ArgumentParser)
 
 
 
