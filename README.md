@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 You'll need to have Python installed in order to run `pwnage.py`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
 > *Note: `pwnage.py` has not been tested with Python 2 and will probably not work without changing some things.*
 
-After Python is installed, install the *Requests* library.
+After Python is installed, install the *requests* library.
 ```
 pip install requests
 ```
@@ -51,7 +51,7 @@ This password has not been pwned yet.
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ### Acknowledgments
 
