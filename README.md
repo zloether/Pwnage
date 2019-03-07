@@ -7,15 +7,15 @@ Python based command line tool for checking the [Have I Been Pwned](https://have
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
-- [Installing](#installing)
-- [Usage](#Usage)
-- [License](#License)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-### Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine.
 
-### Prerequisites
+## Prerequisites
 You'll need to have Python installed in order to run `pwnage.py`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
 > *Note: pwnage.py has not been tested with Python 2 and will probably not work without changing some things.*
 
@@ -24,14 +24,14 @@ After Python is installed, install the *Requests* library.
 pip install requests
 ```
 
-### Installing
+## Installation
 Download the latest version from GitHub using Git.
 ```
 git clone https://github.com/zloether/pwnage.py.git
 ```
 This will create a directory called *pwnage.py* and all the code will be in it.
 
-### Usage
+## Usage
 ```
 python pwnage.py -h
 usage: pwnage.py [-h] [-a <account>] [-p <password>] [-v]
@@ -60,11 +60,11 @@ python pwnage.py -p "djf;hjdhfjk3;j4r436@@!"
 This password has not been pwned yet.
 ```
 
-### License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
-### Acknowledgments
+## Acknowledgments
 
 * [Troy Hunt](https://www.troyhunt.com/) for creating [Have I Been Pwned](https://haveibeenpwned.com/)
 * [Requests: HTTP for Humans](http://python-requests.org/)
