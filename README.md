@@ -1,4 +1,5 @@
 # pwnage.py
+![GitHub](https://img.shields.io/github/license/zloether/pwnage.py.svg)
 Python based command line tool for checking the [Have I Been Pwned](https://haveibeenpwned.com/) database.
 
 ### Getting Started
