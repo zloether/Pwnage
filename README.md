@@ -34,7 +34,7 @@ This will create a directory called *pwnage.py* and all the code will be in it.
 ## Usage
 ```
 python pwnage.py -h
-usage: pwnage.py [-h] [-a <account>] [-p <password>] [-v]
+usage: pwnage.py [-h] [-a <account>] [-p <password>] [-r] [-v]
 
 Checks passwords against the Have I Been Pwned database
 https://haveibeenpwned.com
@@ -45,7 +45,10 @@ optional arguments:
                         account to check against database
   -p <password>, --password <password>
                         password to check against database
+  -r, --prompt          prompt for pass to check against database
   -v, --verbose         verbose output, useful for debugging issues
+
+optional arguments '-p/--password' and '-r/--prompt' cannot be used together
 ```
 
 Trying a bad password
