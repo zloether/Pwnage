@@ -3,7 +3,7 @@
 #########################################################################################
 # NAME: pwnage.py
 # 
-# Website: https://github.com/zloether/Pwnage.py
+# Website: https://github.com/zloether/pwnage.py
 #
 # Description: Checks passwords against the Have I Been Pwned database to see if 
 #               the password has been compromised.
@@ -19,6 +19,7 @@ from hashlib import sha1
 import io
 import argparse
 import urllib
+import getpass
 
 
 
@@ -187,9 +188,11 @@ def parse_password_response(hash_suffix, response, debug=False):
 # -----------------------------------------------------------------------------
 def parse_arguments():
     # create parser object
-    parser = argparse.ArgumentParser(description='Checks passwords against the ' + \
-                                    'Have I Been Pwned database\n' + \
-                                    'https://haveibeenpwned.com')
+    parser = argparse.ArgumentParser(description='Checks passwords against ' + \
+                                    'the Have I Been Pwned database\n' + \
+                                    'https://haveibeenpwned.com',
+                                    epilog="optional arguments '-p/--password'" + \
+                                    " and '-r/--prompt' cannot be used together")
 
     # setup arugment for handling accounts
     parser.add_argument('-a', '--account', dest='account', metavar='<account>',
@@ -198,6 +201,10 @@ def parse_arguments():
     # setup argument for handling passwords
     parser.add_argument('-p', '--password', dest='password', metavar='<password>',
                         action='store', help='password to check against database')
+    
+    # setup argument for prompting for password
+    parser.add_argument('-r', '--prompt', dest='prompt', action='store_true',
+                        help='prompt for pass to check against database')
 
     # setup argument for debug output
     parser.add_argument('-v', '--verbose', action='store_true', dest='debug',
@@ -211,17 +218,34 @@ def parse_arguments():
 
 
 # -----------------------------------------------------------------------------
-# Run interactively
+# Run main
 # -----------------------------------------------------------------------------
-if __name__ == "__main__":
+def run_main():
     args, parser = parse_arguments()
+
+    if args.prompt and args.password:
+        print("Error: Arguments '-p/--password' and '-r/--prompt' cannot be used together.")
+        exit()
     
     if args.password:
         password_pwnage(args.password, debug=args.debug)
+
+    if args.prompt:
+        input_password = getpass.getpass('Password to check: ')
+        password_pwnage(input_password, debug=args.debug)
 
     if args.account:
         account_pwnage(args.account, debug=args.debug, truncate_reponse=False)
         #account_pwnage(args.account, debug=args.debug)
     
-    if not args.account and not args.password:
+    if not args.account and not args.password and not args.prompt:
         parser.print_help()
+
+
+
+# -----------------------------------------------------------------------------
+# Run interactively
+# -----------------------------------------------------------------------------
+if __name__ == "__main__":
+    run_main()
+
