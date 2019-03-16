@@ -1,6 +1,8 @@
 # pwnage.py
-![GitHub](https://img.shields.io/github/license/zloether/pwnage.py.svg)
-![Python](https://img.shields.io/badge/python-v3.5+-blue.svg)
+[![Python](https://img.shields.io/badge/python-v3.5+-blue.svg)](https://www.python.org/)
+[![Build Status](https://travis-ci.org/zloether/pwnage.py.svg?branch=master)](https://travis-ci.org/zloether/pwnage.py)
+[![Issues](https://img.shields.io/github/issues/zloether/pwnage.py.svg)](https://github.com/zloether/pwnage.py/issues)
+[![License](https://img.shields.io/github/license/zloether/pwnage.py.svg)](https://opensource.org/licenses/MIT)
 
 Python based command line tool for checking the [Have I Been Pwned](https://haveibeenpwned.com/) database.
 
