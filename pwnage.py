@@ -16,7 +16,7 @@
 # -----------------------------------------------------------------------------
 import requests
 from hashlib import sha1
-import io
+from io import StringIO
 import argparse
 import urllib
 import getpass
@@ -163,7 +163,7 @@ def parse_password_response(hash_suffix, response, debug=False):
         if debug:
             print('Response code: ' + str(response.status_code))
 
-    buf = io.StringIO(response.text) # build text parser
+    buf = StringIO(response.text) # build text parser
     line = buf.readline().strip() # get first line of response
     
     # iterate thruogh response text
