@@ -27,4 +27,16 @@ def test_password_pwnage(capsys):
 
 def test_account_pwnage(capsys):
     # set test account
-    assert True
+    test_account = 'ChunkyLover53@aol.com'
+
+    # testing method
+    pwnage.account_pwnage(test_account)
+
+    # capture stdout
+    captured = capsys.readouterr()
+
+    # check contents
+    assert captured.out.startswith(test_account + ' has been pwned in these breaches:')
+
+
+

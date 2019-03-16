@@ -53,16 +53,31 @@ optional arguments:
 optional arguments '-p/--password' and '-r/--prompt' cannot be used together
 ```
 
+Checking an account
+```
+python pwnage.py --account Zoidberg@freemail.web
+Zoidberg@freemail.web has been pwned in these breaches:
+Unverified: Collection1 on 2019-01-07. Details leaked: Email addresses, Passwords
+Verified: VK on 2012-01-01. Details leaked: Email addresses, Names, Passwords, Phone numbers
+```
+
 Trying a bad password
 ```
-python pwnage.py -p password
-This password has been pwned 3645804 times!
+python pwnage.py --password Password1234
+This password has been pwned 3621 times!
 ```
 
 Trying a better password
 ```
-python pwnage.py -p "djf;hjdhfjk3;j4r436@@!"
+python pwnage.py --password "djf;hjdhfjk3;j4r436@@!"
 This password has not been pwned yet.
+```
+
+Getting prompted for a password
+```
+python pwnage.py --prompt
+Password to check:
+This password has been pwned 21961 times!
 ```
 
 ## License
