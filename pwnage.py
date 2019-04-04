@@ -20,6 +20,7 @@ from io import StringIO
 import argparse
 import urllib
 import getpass
+import passgenerator
 
 
 
@@ -123,7 +124,7 @@ def parse_account_response(response, input_account, debug=False, truncate_repons
 # -----------------------------------------------------------------------------
 # Look for pwned passwords
 # -----------------------------------------------------------------------------
-def password_pwnage(input_password, debug=False):
+def password_pwnage(input_password, debug=False, print_output=True, return_output=False):
     hashed_pass = sha1(input_password.encode()).hexdigest() # get hash of password
     hash_prefix = hashed_pass[:5] # get first 5 characters of hashed password
     hash_suffix = hashed_pass[5:] # get characters except first 5 from hashed password
@@ -142,11 +143,19 @@ def password_pwnage(input_password, debug=False):
     # parse the API response
     parsed_result = parse_password_response(hash_suffix, response, debug)
     
-    if parsed_result:
-        print('This password has been pwned ' + str(parsed_result) + ' times!')
-    else:
-        print('This password has not been pwned yet.')
+    # print output
+    if print_output:
+        if parsed_result:
+            print('This password has been pwned ' + str(parsed_result) + ' times!')
+        else:
+            print('This password has not been pwned yet.')
 
+    # return results
+    if return_output:
+        if parsed_result:
+            return True # pwned
+        else:
+            return False # not pwned
 
 
 # -----------------------------------------------------------------------------
@@ -184,6 +193,32 @@ def parse_password_response(hash_suffix, response, debug=False):
 
 
 # -----------------------------------------------------------------------------
+# Generate random password that has not been compromised
+# -----------------------------------------------------------------------------
+def generate_password(debug=False, print_output=True, return_output=False):
+    while True: # loop it
+        
+        # generate random password
+        password = passgenerator.generate()
+
+        # check if password has been pwned
+        if password_pwnage(password, debug=debug, print_output=False, return_output=True):
+            if debug:
+                print('Generated pwned password: ' + str(password))
+            continue
+        else: # false for not being pwned
+            break
+
+    # if we get here, the password has not been compromised
+    if print_output:
+        print(password)
+    
+    if return_output:
+        return password
+
+
+
+# -----------------------------------------------------------------------------
 # Configure argument parser
 # -----------------------------------------------------------------------------
 def parse_arguments():
@@ -197,6 +232,11 @@ def parse_arguments():
     # setup arugment for handling accounts
     parser.add_argument('-a', '--account', dest='account', metavar='<account>',
                         action='store', help='account to check against database')
+    
+    # setup arugment for creating password
+    parser.add_argument('-g', '--generate', dest='generate',
+                        action='store_true', help='generate a random password that ' + \
+                        'has not been compromised')
 
     # setup argument for handling passwords
     parser.add_argument('-p', '--password', dest='password', metavar='<password>',
@@ -220,7 +260,7 @@ def parse_arguments():
 # -----------------------------------------------------------------------------
 # Run main
 # -----------------------------------------------------------------------------
-def run_main():
+def __run_main():
     args, parser = parse_arguments()
 
     if args.prompt and args.password:
@@ -236,9 +276,11 @@ def run_main():
 
     if args.account:
         account_pwnage(args.account, debug=args.debug, truncate_reponse=False)
-        #account_pwnage(args.account, debug=args.debug)
     
-    if not args.account and not args.password and not args.prompt:
+    if args.generate:
+        generate_password(debug=args.debug)
+    
+    if not args.account and not args.password and not args.prompt and not args.generate:
         parser.print_help()
 
 
@@ -247,5 +289,5 @@ def run_main():
 # Run interactively
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    run_main()
+    __run_main()
 
