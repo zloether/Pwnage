@@ -15,13 +15,14 @@ def test_password_pwnage(capsys):
     test_password = 'password123'
 
     # testing method
-    pwnage.password_pwnage(test_password)
+    result = pwnage.password_pwnage(test_password, print_output=True, return_output=True)
 
     # capture stdout
     captured = capsys.readouterr()
 
     # check contents
     assert captured.out.startswith('This password has ')
+    assert result == True
 
 
 

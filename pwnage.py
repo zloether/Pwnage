@@ -153,9 +153,9 @@ def password_pwnage(input_password, debug=False, print_output=True, return_outpu
     # return results
     if return_output:
         if parsed_result:
-            return True
+            return True # pwned
         else:
-            return False
+            return False # not pwned
 
 
 # -----------------------------------------------------------------------------
@@ -206,7 +206,7 @@ def generate_password(debug=False, print_output=True, return_output=False):
             if debug:
                 print('Generated pwned password: ' + str(password))
             continue
-        else:
+        else: # false for not being pwned
             break
 
     # if we get here, the password has not been compromised
