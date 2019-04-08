@@ -1,8 +1,8 @@
-# pwnage.py
+# pwnage
 [![Python](https://img.shields.io/badge/python-v3.5+-blue.svg)](https://www.python.org/)
-[![Build Status](https://travis-ci.org/zloether/pwnage.py.svg?branch=master)](https://travis-ci.org/zloether/pwnage.py)
-[![Issues](https://img.shields.io/github/issues/zloether/pwnage.py.svg)](https://github.com/zloether/pwnage.py/issues)
-[![License](https://img.shields.io/github/license/zloether/pwnage.py.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/zloether/pwnage.svg?branch=master)](https://travis-ci.org/zloether/pwnage.py)
+[![Issues](https://img.shields.io/github/issues/zloether/pwnage.svg)](https://github.com/zloether/pwnage.py/issues)
+[![License](https://img.shields.io/github/license/zloether/pwnage.svg)](https://opensource.org/licenses/MIT)
 
 Python based command line tool for checking the [Have I Been Pwned](https://haveibeenpwned.com/) database.
 
@@ -18,8 +18,8 @@ Python based command line tool for checking the [Have I Been Pwned](https://have
 These instructions will get you a copy of the project up and running on your local machine.
 
 ## Prerequisites
-You'll need to have Python installed in order to run `pwnage.py`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
-> *Note: `pwnage.py` has not been tested with Python 2 and will probably not work without changing some things.*
+You'll need to have Python installed in order to run `pwnage`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
+> *Note: `pwnage` has not been tested with Python 2 and will probably not work without changing some things.*
 
 After Python is installed, install the `requests` and `passgenerator` libraries.
 ```
@@ -29,9 +29,9 @@ pip install requests passgenerator
 ## Installation
 Download the latest version from GitHub using Git.
 ```
-git clone https://github.com/zloether/pwnage.py.git
+git clone https://github.com/zloether/pwnage.git
 ```
-This will create a directory called *pwnage.py* and all the code will be in it.
+This will create a directory called *pwnage* and all the code will be in it.
 
 ## Usage
 ```
