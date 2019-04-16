@@ -1,4 +1,4 @@
-# pwnage
+# Pwnage
 [![Python](https://img.shields.io/badge/python-v3.5+-blue.svg)](https://www.python.org/)
 [![Build Status](https://travis-ci.org/zloether/pwnage.svg?branch=master)](https://travis-ci.org/zloether/pwnage)
 [![Issues](https://img.shields.io/github/issues/zloether/pwnage.svg)](https://github.com/zloether/pwnage/issues)
@@ -18,20 +18,25 @@ Python based command line tool for checking the [Have I Been Pwned](https://have
 These instructions will get you a copy of the project up and running on your local machine.
 
 ## Prerequisites
-You'll need to have Python installed in order to run `pwnage`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
-> *Note: `pwnage` has not been tested with Python 2 and will probably not work without changing some things.*
-
-After Python is installed, install the `requests` and `passgenerator` libraries.
-```
-pip install requests passgenerator
-```
+You'll need to have Python installed in order to run `Pwnage`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
+> *Note: `Pwnage` has not been tested with Python 2 and will probably not work without changing some things.*
 
 ## Installation
 Download the latest version from GitHub using Git.
 ```
 git clone https://github.com/zloether/pwnage.git
 ```
-This will create a directory called *pwnage* and all the code will be in it.
+This will create a directory called *Pwnage* and all the code will be in it.
+
+Switch to the *Pwnage* directory:
+```
+cd Pwnage
+```
+
+Install the required packages:
+```
+pip install -r requirements.txt
+```
 
 ## Usage
 ```

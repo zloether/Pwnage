@@ -3,7 +3,7 @@
 #########################################################################################
 # NAME: pwnage.py
 # 
-# Website: https://github.com/zloether/pwnage.py
+# Website: https://github.com/zloether/pwnage
 #
 # Description: Checks passwords against the Have I Been Pwned database to see if 
 #               the password has been compromised.
