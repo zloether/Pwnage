@@ -7,41 +7,25 @@
 Python based command line tool for checking the [Have I Been Pwned](https://haveibeenpwned.com/) database.
 
 ## Table of Contents
-- [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine.
-
 ## Prerequisites
 You'll need to have Python installed in order to run `Pwnage`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
 > *Note: `Pwnage` has not been tested with Python 2 and will probably not work without changing some things.*
 
 ## Installation
-Download the latest version from GitHub using Git.
 ```
-git clone https://github.com/zloether/pwnage.git
-```
-This will create a directory called *Pwnage* and all the code will be in it.
-
-Switch to the *Pwnage* directory:
-```
-cd Pwnage
-```
-
-Install the required packages:
-```
-pip install -r requirements.txt
+pip install pwnage
 ```
 
 ## Usage
 ```
-python pwnage.py -h
-usage: pwnage.py [-h] [-a <account>] [-g] [-p <password>] [-r] [-v]
+pwnage --help
+usage: pwnage [-h] [-a <account>] [-g] [-p <password>] [-r] [-v]
 
 Checks passwords against the Have I Been Pwned database
 https://haveibeenpwned.com
@@ -62,7 +46,7 @@ optional arguments '-p/--password' and '-r/--prompt' cannot be used together
 
 Checking an account
 ```
-python pwnage.py --account Zoidberg@freemail.web
+pwnage --account Zoidberg@freemail.web
 Zoidberg@freemail.web has been pwned in these breaches:
 Unverified: Collection1 on 2019-01-07. Details leaked: Email addresses, Passwords
 Verified: VK on 2012-01-01. Details leaked: Email addresses, Names, Passwords, Phone numbers
@@ -70,26 +54,26 @@ Verified: VK on 2012-01-01. Details leaked: Email addresses, Names, Passwords, P
 
 Trying a bad password
 ```
-python pwnage.py --password Password1234
+pwnage --password Password1234
 This password has been pwned 3621 times!
 ```
 
 Trying a better password
 ```
-python pwnage.py --password "djf;hjdhfjk3;j4r436@@!"
+pwnage --password "djf;hjdhfjk3;j4r436@@!"
 This password has not been pwned yet.
 ```
 
 Getting prompted for a password
 ```
-python pwnage.py --prompt
+pwnage --prompt
 Password to check:
 This password has been pwned 21961 times!
 ```
 
 Generating a random password that gets checked against HIBP to make sure it has never been compromised
 ```
-python pwnage.py --generate
+pwnage --generate
 V@0l4uMOqXgtCidqU!'gqwlmfO0igcuM
 ```
 
