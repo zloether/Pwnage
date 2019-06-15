@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "pwnage",
-    version = "1.0.0rc2",
+    version = "1.0.0",
     author = "Zackary Loether",
     author_email = "zloether@gmail.com",
     description = ("CLI tool for https://haveibeenpwned.com"),
@@ -14,7 +14,6 @@ setup(
     keywords = "password hibp pwned",
     url = "https://github.com/zloether/Pwnage",
     packages=["pwnage"],
-    include_package_data=True,
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     classifiers=[
@@ -29,5 +28,6 @@ setup(
     ],
     entry_points = {
         'console_scripts': ['pwnage=pwnage.pwnage:__run_main'],
-    }
+    },
+    install_requires=['passgenerator', 'requests']
 )
