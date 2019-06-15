@@ -3,6 +3,7 @@ import os.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 import pwnage
 from argparse import ArgumentParser
+from unittest import mock
 
 def test_parse_arguments(capsys):
     args, parser = pwnage.parse_arguments()
@@ -41,3 +42,21 @@ def test_account_pwnage(capsys):
 
 
 
+def test_generate_password(capsys):
+    # test returning output
+    password = pwnage.generate_password(print_output=False, return_output=True)
+
+    # check length of returned password
+    assert len(password) == 32
+
+    # test printing output
+    pwnage.generate_password()
+
+    # capture stdout
+    captured = capsys.readouterr()
+
+    # check output
+    assert len(captured.out.strip()) == 32
+
+    
+    

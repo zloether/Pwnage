@@ -1,8 +1,8 @@
 # Pwnage
 [![Python](https://img.shields.io/badge/python-v3.5+-blue.svg)](https://www.python.org/)
-[![Build Status](https://travis-ci.org/zloether/pwnage.svg?branch=master)](https://travis-ci.org/zloether/pwnage)
-[![Issues](https://img.shields.io/github/issues/zloether/pwnage.svg)](https://github.com/zloether/pwnage/issues)
-[![License](https://img.shields.io/github/license/zloether/pwnage.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/zloether/Pwnage.svg?branch=master)](https://travis-ci.org/zloether/Pwnage)
+[![Issues](https://img.shields.io/github/issues/zloether/Pwnage.svg)](https://github.com/zloether/Pwnage/issues)
+[![License](https://img.shields.io/github/license/zloether/Pwnage.svg)](https://opensource.org/licenses/MIT)
 
 Python based command line tool for checking the [Have I Been Pwned](https://haveibeenpwned.com/) database.
 
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 ## Usage
 ```
 python pwnage.py -h
-usage: pwnage.py [-h] [-a <account>] [-p <password>] [-r] [-v]
+usage: pwnage.py [-h] [-a <account>] [-g] [-p <password>] [-r] [-v]
 
 Checks passwords against the Have I Been Pwned database
 https://haveibeenpwned.com
@@ -50,6 +50,8 @@ optional arguments:
   -h, --help            show this help message and exit
   -a <account>, --account <account>
                         account to check against database
+  -g, --generate        generate a random password that has not been
+                        compromised
   -p <password>, --password <password>
                         password to check against database
   -r, --prompt          prompt for pass to check against database
@@ -83,6 +85,12 @@ Getting prompted for a password
 python pwnage.py --prompt
 Password to check:
 This password has been pwned 21961 times!
+```
+
+Generating a random password that gets checked against HIBP to make sure it has never been compromised
+```
+python pwnage.py --generate
+V@0l4uMOqXgtCidqU!'gqwlmfO0igcuM
 ```
 
 ## License
